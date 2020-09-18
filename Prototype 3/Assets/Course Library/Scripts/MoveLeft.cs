@@ -1,4 +1,8 @@
-﻿using System.Collections;
+﻿/* Broc Edson
+ * Prototype 3
+ * Moves an object left and deletes out of bounds objects
+ */
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
