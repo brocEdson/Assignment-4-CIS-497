@@ -1,4 +1,8 @@
-﻿using System.Collections;
+﻿/* Broc Edson
+ * Prototype 3
+ * Adds score when triggered
+ */
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
