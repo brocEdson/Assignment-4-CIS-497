@@ -14,15 +14,21 @@ public class SpawnManager : MonoBehaviour
     private float startDelay = 2;
     private float repeatDelay = 2;
 
+    private PlayerController playerController;
+
     // Start is called before the first frame update
     void Start()
     {
+        playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         InvokeRepeating("SpawnObstacle", startDelay, repeatDelay);
     }
 
     // Update is called once per frame
     void SpawnObstacle()
     {
-        Instantiate(obstaclePrefab, spawnPosition, obstaclePrefab.transform.rotation);
+        if(!playerController.gameOver)
+        {
+            Instantiate(obstaclePrefab, spawnPosition, obstaclePrefab.transform.rotation);
+        }
     }
 }

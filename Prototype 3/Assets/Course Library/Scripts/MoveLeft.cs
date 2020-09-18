@@ -10,12 +10,20 @@ public class MoveLeft : MonoBehaviour
 {
     public float speed = 30f;
     private float leftBound = -15;
+    private PlayerController playerController;
+
+    private void Start()
+    {
+        playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+    }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        transform.Translate(Vector3.left * speed * Time.deltaTime);
-
+        if(!playerController.gameOver)
+        {
+            transform.Translate(Vector3.left * speed * Time.deltaTime);
+        }
         if(transform.position.x < leftBound && gameObject.CompareTag("Obstacle"))
         {
             Destroy(gameObject);

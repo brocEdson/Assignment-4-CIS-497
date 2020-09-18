@@ -1,6 +1,6 @@
 ﻿/* Broc Edson
  * Prototype 3
- * 
+ * Controls the player's jumping
  */
 using System.Collections;
 using System.Collections.Generic;
@@ -23,7 +23,10 @@ public class PlayerController : MonoBehaviour
 
         jumpForceMode = ForceMode.Impulse;
 
-        Physics.gravity *= gravityModifier;
+        if(Physics.gravity.y > -10)
+        {
+            Physics.gravity *= gravityModifier;
+        }
     }
 
     // Update is called once per frame
@@ -38,9 +41,14 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.CompareTag("Ground"))
+        if(collision.gameObject.CompareTag("Ground") && !gameOver)
         {
             isOnGround = true;
+        }
+        else if(collision.gameObject.CompareTag("Obstacle") && !gameOver)
+        {
+            Debug.Log("Game Over!");
+            gameOver = true;
         }
     }
 }
