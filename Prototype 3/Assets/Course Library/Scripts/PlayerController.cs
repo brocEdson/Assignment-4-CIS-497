@@ -39,6 +39,7 @@ public class PlayerController : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Space) && isOnGround && !gameOver)
         {
             rb.AddForce(Vector3.up * jumpForce, jumpForceMode);
+            playerAnim.SetTrigger("Jump_trig");
             isOnGround = false;
         }
     }
