@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     public float jumpForce;
     public ForceMode jumpForceMode;
     public float gravityModifier;
+    public ParticleSystem explosionParticle;
 
     public bool isOnGround = true;
     public bool gameOver = false;
@@ -55,6 +56,7 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Game Over!");
             playerAnim.SetBool("Death_b", true);
             playerAnim.SetInteger("DeathType_int", 1);
+            explosionParticle.Play();
             gameOver = true;
         }
     }
