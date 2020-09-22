@@ -9,6 +9,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody rb;
+    private Animator playerAnim;
     public float jumpForce;
     public ForceMode jumpForceMode;
     public float gravityModifier;
@@ -20,6 +21,9 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        playerAnim = GetComponent<Animator>();
+
+        playerAnim.SetFloat("Speed_f", 1.0f);
 
         jumpForceMode = ForceMode.Impulse;
 
