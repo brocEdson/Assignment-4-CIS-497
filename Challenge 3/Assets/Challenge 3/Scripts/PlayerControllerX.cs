@@ -24,6 +24,7 @@ public class PlayerControllerX : MonoBehaviour
     public AudioClip bounceSound;
 
     private bool isLowEnough;
+    private ScoreManager scoreManager;
 
 
     // Start is called before the first frame update
@@ -32,6 +33,7 @@ public class PlayerControllerX : MonoBehaviour
         playerRb = GetComponent<Rigidbody>();
         Physics.gravity *= gravityModifier;
         playerAudio = GetComponent<AudioSource>();
+        scoreManager = GameObject.FindGameObjectWithTag("ScoreManager").GetComponent<ScoreManager>();
 
         // Apply a small upward force at the start of the game
         playerRb.AddForce(Vector3.up * 5, ForceMode.Impulse);
@@ -58,6 +60,7 @@ public class PlayerControllerX : MonoBehaviour
             playerAudio.PlayOneShot(explodeSound, 1.0f);
             gameOver = true;
             Debug.Log("Game Over!");
+            ScoreManager.ended = true;
             Destroy(other.gameObject);
         } 
 
@@ -66,6 +69,7 @@ public class PlayerControllerX : MonoBehaviour
         {
             fireworksParticle.Play();
             playerAudio.PlayOneShot(moneySound, 1.0f);
+            ScoreManager.score++;
             Destroy(other.gameObject);
 
         }
